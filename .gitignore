@@ -37,6 +37,9 @@ Thumbs.db
 # Playwright
 .playwright-mcp/
 
+# Testing
+coverage/
+
 # Misc
 .env
 .env.local
