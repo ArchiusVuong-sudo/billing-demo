@@ -18,11 +18,7 @@ export default function BalanceDisplay({
   return (
     <View style={styles.container}>
       {showLowBalanceWarning && (
-        <Banner
-          visible={true}
-          icon="alert"
-          style={styles.warningBanner}
-        >
+        <Banner visible={true} icon="alert" style={styles.warningBanner}>
           Low balance! Less than 1 minute remaining
         </Banner>
       )}
@@ -53,10 +49,7 @@ export default function BalanceDisplay({
             </Text>
             <Text
               variant="headlineSmall"
-              style={[
-                styles.value,
-                remainingBalance <= 0 && styles.depleted,
-              ]}
+              style={[styles.value, remainingBalance <= 0 && styles.depleted]}
             >
               {remainingBalance.toFixed(2)} tokens
             </Text>

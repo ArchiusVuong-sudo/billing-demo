@@ -62,7 +62,7 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'react': react,
+      react: react,
       'react-hooks': reactHooks,
     },
     settings: {

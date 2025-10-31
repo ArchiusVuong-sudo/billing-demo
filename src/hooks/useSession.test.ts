@@ -72,9 +72,7 @@ describe('useSession Hook', () => {
         pricePerMinute: 2.0, // 4.0 / 2.0 = exactly 2 minutes
       };
 
-      const { result } = renderHook(() =>
-        useSession(exactBalanceAvatar, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(exactBalanceAvatar, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -90,9 +88,7 @@ describe('useSession Hook', () => {
         pricePerMinute: 2.01, // 4.0 / 2.01 = 1.99 minutes (just below 2)
       };
 
-      const { result } = renderHook(() =>
-        useSession(slightlyHighAvatar, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(slightlyHighAvatar, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -161,9 +157,7 @@ describe('useSession Hook', () => {
     });
 
     it('should not show warning when balance is sufficient', () => {
-      const { result } = renderHook(() =>
-        useSession(mockAvatarLowPrice, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(mockAvatarLowPrice, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -237,9 +231,7 @@ describe('useSession Hook', () => {
         pricePerMinute: 2.0,
       };
 
-      const { result } = renderHook(() =>
-        useSession(exactAvatar, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(exactAvatar, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -291,9 +283,7 @@ describe('useSession Hook', () => {
     });
 
     it('should handle fractional token consumption correctly', () => {
-      const { result } = renderHook(() =>
-        useSession(mockAvatarLowPrice, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(mockAvatarLowPrice, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -409,9 +399,7 @@ describe('useSession Hook', () => {
         pricePerMinute: 0.05,
       };
 
-      const { result } = renderHook(() =>
-        useSession(lowPriceAvatar, 'VIDEO', smallBalanceProfile)
-      );
+      const { result } = renderHook(() => useSession(lowPriceAvatar, 'VIDEO', smallBalanceProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -455,9 +443,7 @@ describe('useSession Hook', () => {
         description: 'Expert in startup strategy',
       };
 
-      const { result } = renderHook(() =>
-        useSession(sarahChen, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(sarahChen, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -493,9 +479,7 @@ describe('useSession Hook', () => {
         description: 'Personal training specialist',
       };
 
-      const { result } = renderHook(() =>
-        useSession(marcusRivera, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(marcusRivera, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();
@@ -524,9 +508,7 @@ describe('useSession Hook', () => {
         description: 'PhD in organizational psychology',
       };
 
-      const { result } = renderHook(() =>
-        useSession(emilyWatson, 'VIDEO', mockUserProfile)
-      );
+      const { result } = renderHook(() => useSession(emilyWatson, 'VIDEO', mockUserProfile));
 
       act(() => {
         result.current.handleStartSession();

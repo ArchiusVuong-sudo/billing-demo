@@ -8,7 +8,9 @@
       "Bash(npm run lint)",
       "Bash(git log:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npm run format:check:*)"
     ],
     "deny": [],
     "ask": []

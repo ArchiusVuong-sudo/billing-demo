@@ -11,12 +11,7 @@ export default function SessionView({ sessionType }: SessionViewProps) {
   const isVideo = sessionType === 'VIDEO';
 
   return (
-    <View
-      style={[
-        styles.container,
-        isVideo ? styles.videoContainer : styles.voiceContainer,
-      ]}
-    >
+    <View style={[styles.container, isVideo ? styles.videoContainer : styles.voiceContainer]}>
       <Text variant="displaySmall" style={styles.text}>
         {isVideo ? '🎥 Video Session Active' : '🎤 Voice Session Active'}
       </Text>

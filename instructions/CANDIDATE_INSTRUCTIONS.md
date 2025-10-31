@@ -55,35 +55,44 @@ When the user's token balance is completely depleted, automatically end the sess
 Try these scenarios to verify your implementation:
 
 ### Scenario 1: Normal Session → Auto-Terminate
+
 **Steps:**
+
 1. Pick Sarah Chen ($2.00/min)
 2. Start any session (video or voice)
 3. Let it run for 2 minutes
 
 **Expected behavior:**
+
 - Tokens consumed increases every second
 - Around 1:30 (when you've used 3.0 tokens), you see a "low balance" warning banner
 - At exactly 2:00, the session auto-terminates (4.0 tokens used)
 - Alert shows: "Session ended. Duration: 2m 0s, Tokens charged: 4.00"
 
 ### Scenario 2: Insufficient Balance → Can't Start
+
 **Steps:**
+
 1. Try to start a session with Dr. Emily Watson ($3.00/min)
 2. Click "Start Session"
 
 **Expected behavior:**
+
 - Session refuses to start
 - Alert immediately shows: "Insufficient balance to start session"
 - You stay on the session screen, status shows "Ready to start"
 - (You have 4.0 tokens but need at least 3.0 for 1 minute - too risky to allow)
 
 ### Scenario 3: Just Enough Balance → Auto-Terminate
+
 **Steps:**
+
 1. Pick Marcus Rivera ($1.50/min)
 2. Start a session
 3. Let it run until it stops automatically
 
 **Expected behavior:**
+
 - Session starts successfully
 - Low balance warning appears around 2:00 (when 3.0 tokens consumed, 1.0 remaining = < 1 min)
 - Session auto-terminates around 2:40 (160 seconds, 4.0 tokens fully consumed)
@@ -118,12 +127,14 @@ Before submitting, verify:
 Choose one of these options:
 
 **Option 1: GitHub Repository**
+
 - Fork or clone this repository
 - Make your changes
 - Push to a public GitHub repository
 - Share the repository link with us
 
 **Option 2: Modified Files**
+
 - Make your changes locally
 - Send us the file(s) you modified
 - Include any new files you created
@@ -141,6 +152,7 @@ Choose one of these options:
 ## Questions?
 
 If you encounter setup issues:
+
 - Ensure Node.js 18+ is installed
 - Check that port 19006 is available
 - Try clearing cache: `npx expo start -c --web`

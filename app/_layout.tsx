@@ -29,14 +29,8 @@ export default function RootLayout() {
             },
           }}
         >
-          <Stack.Screen
-            name="index"
-            options={{ title: 'Select Avatar' }}
-          />
-          <Stack.Screen
-            name="session"
-            options={{ title: 'Session' }}
-          />
+          <Stack.Screen name="index" options={{ title: 'Select Avatar' }} />
+          <Stack.Screen name="session" options={{ title: 'Session' }} />
         </Stack>
       </PaperProvider>
     </SafeAreaProvider>

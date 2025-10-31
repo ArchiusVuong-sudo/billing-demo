@@ -77,7 +77,7 @@ checkSufficientBalance()    Timer Loop (1s):
 ### Token Calculation Formula
 
 ```typescript
-tokensConsumed = (avatar.pricePerMinute / 60) * durationInSeconds
+tokensConsumed = (avatar.pricePerMinute / 60) * durationInSeconds;
 ```
 
 ### Safety Checks (src/hooks/useSession.ts)
@@ -88,11 +88,11 @@ tokensConsumed = (avatar.pricePerMinute / 60) * durationInSeconds
 
 ## 📊 Test Scenarios
 
-| Avatar | Price/Min | Balance | Runtime | Warning At | Terminates At |
-|--------|-----------|---------|---------|------------|---------------|
-| Sarah Chen | $2.00 | 4.0 | 2:00 | ~1:30 | 2:00 |
-| Marcus Rivera | $1.50 | 4.0 | 2:40 | ~2:00 | 2:40 |
-| Dr. Emily Watson | $3.00 | 4.0 | Blocked | N/A | N/A |
+| Avatar           | Price/Min | Balance | Runtime | Warning At | Terminates At |
+| ---------------- | --------- | ------- | ------- | ---------- | ------------- |
+| Sarah Chen       | $2.00     | 4.0     | 2:00    | ~1:30      | 2:00          |
+| Marcus Rivera    | $1.50     | 4.0     | 2:40    | ~2:00      | 2:40          |
+| Dr. Emily Watson | $3.00     | 4.0     | Blocked | N/A        | N/A           |
 
 ### Test Coverage
 
@@ -145,6 +145,7 @@ npm run test:watch
 Ensures meaningful session experience. A 1-minute minimum would lead to frustrating, abrupt terminations.
 
 **Implementation:**
+
 ```typescript
 const MINIMUM_SESSION_DURATION_MINUTES = 2;
 ```
@@ -152,16 +153,18 @@ const MINIMUM_SESSION_DURATION_MINUTES = 2;
 ### 2. Separated Timer & Safety Effects
 
 **Before** (coupled):
+
 ```typescript
 useEffect(() => {
   setInterval(() => {
     updateTimer();
-    checkBalance();  // Mixed concerns
+    checkBalance(); // Mixed concerns
   }, 1000);
 }, []);
 ```
 
 **After** (separated):
+
 ```typescript
 // Timer effect - timing logic
 useEffect(() => {
@@ -182,7 +185,7 @@ All functions wrapped in `useCallback` to prevent unnecessary re-renders:
 
 ```typescript
 const checkSufficientBalance = useCallback((): boolean => {
-  return userProfile.tokenBalance >= (avatar.pricePerMinute * 2);
+  return userProfile.tokenBalance >= avatar.pricePerMinute * 2;
 }, [avatar.pricePerMinute, userProfile.tokenBalance]);
 ```
 
@@ -217,7 +220,8 @@ checkBalanceDepleted = () => tokensConsumed === userBalance;
 const MINIMUM_SESSION_DURATION_MINUTES = 2;
 
 // ❌ Bad
-if (balance >= pricePerMinute * 2) {} // Why 2?
+if (balance >= pricePerMinute * 2) {
+} // Why 2?
 ```
 
 ### Comprehensive Documentation
@@ -288,6 +292,7 @@ Built with modern React/TypeScript best practices and comprehensive testing to d
 ---
 
 **Key Metrics:**
+
 - Test Coverage: 100%
 - TypeScript Strict: ✅
 - Zero Runtime Errors: ✅

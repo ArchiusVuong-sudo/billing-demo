@@ -7,6 +7,7 @@ This document details the implementation of billing safety features for the Toke
 ## Features Implemented
 
 ### 1. **Sufficient Balance Check** (`checkSufficientBalance()`)
+
 **Location**: `src/hooks/useSession.ts:45-55`
 
 - **Purpose**: Prevents users from starting sessions without adequate token balance
@@ -15,6 +16,7 @@ This document details the implementation of billing safety features for the Toke
 - **Example**: Dr. Emily Watson at $3.00/min requires 6.0 tokens, but user only has 4.0 → **blocked**
 
 ### 2. **Low Balance Warning** (`checkLowBalance()`)
+
 **Location**: `src/hooks/useSession.ts:57-73`
 
 - **Purpose**: Alerts users when they're running low on tokens mid-session
@@ -23,6 +25,7 @@ This document details the implementation of billing safety features for the Toke
 - **Example**: Sarah Chen at $2.00/min with 4.0 balance → warning at ~1:30 (2.0 tokens consumed, 2.0 remaining < 2.0 needed for 1 minute)
 
 ### 3. **Automatic Session Termination** (`checkBalanceDepleted()`)
+
 **Location**: `src/hooks/useSession.ts:75-83`
 
 - **Purpose**: Prevents users from going into negative balance
@@ -31,6 +34,7 @@ This document details the implementation of billing safety features for the Toke
 - **Example**: Sarah Chen runs for exactly 2:00 and terminates automatically
 
 ### 4. **Real-time Balance Monitoring**
+
 **Location**: `src/hooks/useSession.ts:122-168`
 
 - **Implementation**: Separated timer and safety checks into distinct useEffect hooks
@@ -43,6 +47,7 @@ This document details the implementation of billing safety features for the Toke
 ### Code Quality Improvements
 
 1. **Constants for Magic Numbers**
+
    ```typescript
    const SECONDS_PER_MINUTE = 60;
    const TIMER_INTERVAL_MS = 1000;
@@ -69,6 +74,7 @@ This document details the implementation of billing safety features for the Toke
 ## Testing Strategy
 
 ### Comprehensive Unit Tests
+
 **Location**: `src/hooks/useSession.test.ts`
 
 **Coverage**: 100% of useSession.ts (21 tests, all passing)
@@ -129,9 +135,11 @@ This document details the implementation of billing safety features for the Toke
 ## Files Modified
 
 ### Core Implementation
+
 - `src/hooks/useSession.ts` - Main implementation file
 
 ### Testing Infrastructure
+
 - `src/hooks/useSession.test.ts` - Comprehensive unit tests
 - `jest.config.js` - Jest configuration
 - `jest.setup.js` - Test environment setup
@@ -139,16 +147,19 @@ This document details the implementation of billing safety features for the Toke
 - `package.json` - Added test scripts and dependencies
 
 ### Documentation
+
 - `IMPLEMENTATION.md` - This file
 
 ## Running the Project
 
 ### Installation
+
 ```bash
 npm install --legacy-peer-deps
 ```
 
 ### Testing
+
 ```bash
 # Run all tests
 npm test
@@ -161,6 +172,7 @@ npm run test:coverage
 ```
 
 ### Development Server
+
 ```bash
 # Start web development server
 npm run web
@@ -189,16 +201,19 @@ useSession.ts        |     100 |      100 |     100 |     100 |
 ## Expected Behaviors (Verified)
 
 ### Sarah Chen ($2.00/min)
+
 - ✅ Session starts (4.0 tokens / 2.0 per min = 2 minutes runtime)
 - ✅ Low balance warning appears at ~1:30 (2.0 tokens remaining < 2.0 needed for 1 min)
 - ✅ Auto-terminates at exactly 2:00 (4.0 tokens consumed)
 
 ### Marcus Rivera ($1.50/min)
+
 - ✅ Session starts (4.0 tokens / 1.5 per min = 2.67 minutes runtime)
 - ✅ Low balance warning appears at ~2:00
 - ✅ Auto-terminates at ~2:40
 
 ### Dr. Emily Watson ($3.00/min)
+
 - ✅ Session blocked (4.0 tokens / 3.0 per min = 1.33 minutes < 2 minute requirement)
 - ✅ Alert shown: "Insufficient balance to start session"
 
@@ -235,6 +250,7 @@ useSession.ts        |     100 |      100 |     100 |     100 |
 ## Notes for Reviewers
 
 This implementation prioritizes:
+
 1. **Correctness**: All calculations are precise and handle edge cases
 2. **Code Quality**: Clean, well-documented, maintainable code
 3. **Testing**: Comprehensive test coverage with real-world scenarios

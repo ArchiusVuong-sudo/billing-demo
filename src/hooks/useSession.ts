@@ -16,11 +16,7 @@ const MINIMUM_SESSION_DURATION_MINUTES = 2; // Requires 2 minutes minimum for me
  * @param userProfile - User profile containing token balance
  * @returns Session state and control functions
  */
-export function useSession(
-  avatar: Avatar,
-  sessionType: SessionType,
-  userProfile: UserProfile
-) {
+export function useSession(avatar: Avatar, sessionType: SessionType, userProfile: UserProfile) {
   const [sessionState, setSessionState] = useState<SessionState>('idle');
   const [sessionDuration, setSessionDuration] = useState(0); // seconds
   const [tokensConsumed, setTokensConsumed] = useState(0);
@@ -50,8 +46,7 @@ export function useSession(
    * @returns true if balance >= 2x avatar's price per minute, false otherwise
    */
   const checkSufficientBalance = useCallback((): boolean => {
-    const tokensNeededForMinimumDuration =
-      avatar.pricePerMinute * MINIMUM_SESSION_DURATION_MINUTES;
+    const tokensNeededForMinimumDuration = avatar.pricePerMinute * MINIMUM_SESSION_DURATION_MINUTES;
     return userProfile.tokenBalance >= tokensNeededForMinimumDuration;
   }, [avatar.pricePerMinute, userProfile.tokenBalance]);
 
@@ -64,10 +59,7 @@ export function useSession(
     const remainingBalance = userProfile.tokenBalance - tokensConsumed;
     const tokensNeededForOneMinute = avatar.pricePerMinute;
 
-    if (
-      remainingBalance < tokensNeededForOneMinute &&
-      !lowBalanceWarningShown.current
-    ) {
+    if (remainingBalance < tokensNeededForOneMinute && !lowBalanceWarningShown.current) {
       lowBalanceWarningShown.current = true;
       setShowLowBalanceWarning(true);
     }
@@ -160,13 +152,7 @@ export function useSession(
         handleEndSession();
       }
     }
-  }, [
-    sessionState,
-    tokensConsumed,
-    checkLowBalance,
-    checkBalanceDepleted,
-    handleEndSession,
-  ]);
+  }, [sessionState, tokensConsumed, checkLowBalance, checkBalanceDepleted, handleEndSession]);
 
   return {
     sessionState,

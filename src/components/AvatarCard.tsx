@@ -9,11 +9,7 @@ interface AvatarCardProps {
   onStartVoice: () => void;
 }
 
-export default function AvatarCard({
-  avatar,
-  onStartVideo,
-  onStartVoice,
-}: AvatarCardProps) {
+export default function AvatarCard({ avatar, onStartVideo, onStartVoice }: AvatarCardProps) {
   return (
     <Card style={styles.card}>
       <Card.Content>
@@ -38,12 +34,7 @@ export default function AvatarCard({
       </Card.Content>
 
       <Card.Actions style={styles.actions}>
-        <Button
-          mode="contained"
-          onPress={onStartVideo}
-          style={styles.button}
-          icon="video"
-        >
+        <Button mode="contained" onPress={onStartVideo} style={styles.button} icon="video">
           Start Video
         </Button>
         <Button
